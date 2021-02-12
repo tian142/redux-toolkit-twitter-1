@@ -3,13 +3,26 @@ import React, { useState } from 'react'
 import { addPost } from './postsSlice'
 
 import { useDispatch } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 
 export const CreatePost = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
+  const dispatch = useDispatch()
+
   const setOnTitleChange = (e) => setTitle(e.target.value)
   const setOnContentChange = (e) => setContent(e.target.value)
+
+  const setPostStateChange = () => {
+    dispatch(
+      addPost({
+        id: nanoid,
+        title,
+        content,
+      })
+    )
+  }
 
   return (
     <form>
@@ -18,7 +31,7 @@ export const CreatePost = () => {
       <input value={title} onChange={setOnTitleChange} />
       <h4>Content</h4>
       <input value={content} onChange={setOnContentChange} />
-      <button>Submit</button>
+      <button onClick={() => setPostStateChange}>Submit</button>
     </form>
   )
 }
