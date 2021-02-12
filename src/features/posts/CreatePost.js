@@ -25,13 +25,17 @@ export const CreatePost = () => {
   }
 
   return (
-    <form>
+    <section>
       <h2>Add a post</h2>
-      <h4>Title</h4>
-      <input value={title} onChange={setOnTitleChange} />
-      <h4>Content</h4>
-      <input value={content} onChange={setOnContentChange} />
-      <button onClick={() => setPostStateChange}>Submit</button>
-    </form>
+      <form>
+        <h4>Title</h4>
+        <input value={title} onChange={setOnTitleChange} />
+        <h4>Content</h4>
+        <input value={content} onChange={setOnContentChange} />
+        <button type="button" onClick={setPostStateChange}>
+          Submit
+        </button>
+      </form>
+    </section>
   )
 }
